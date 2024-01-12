@@ -50,7 +50,7 @@ export default function Home() {
               src={PotentialImage}
               width=""
               height=""
-              alt="unlock your potential"
+              alt="unlock potential"
             />
           </div>
           <div className="potential-text">
