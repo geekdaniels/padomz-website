@@ -2,7 +2,7 @@
   //
   & .header {
     &-info {
-      @apply px-0 relative flex flex-col lg:flex-row w-full justify-between pt-[8rem] lg:pt-[12rem] pb-[8rem];
+      @apply px-0 relative flex flex-col lg:flex-row w-full justify-between pt-[8rem] lg:pt-[12rem] pb-[8rem] mt-48 md:mt-0;
     }
 
     &-content {
