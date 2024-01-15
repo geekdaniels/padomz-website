@@ -2,9 +2,9 @@
 import { format } from "date-fns";
 import { useFormik } from "formik";
 import { useEffect, useRef } from "react";
+import { usePaystackPayment } from "react-paystack";
 // Next
 import Image from "next/image";
-
 import { useRouter } from "next/navigation";
 // Components
 import Loader from "@/_components/atoms/Loader";
@@ -15,9 +15,14 @@ import { Button } from "../atoms/Button";
 // Images
 import Logo from "@/_assets/images/logo-white.png";
 
+const onClose = () => {
+  console.log("closed");
+};
+
 export const Register = ({ open, path, data }) => {
   const formRef = useRef(null);
   const navigate = useRouter();
+  const fee = data?.amount * 100;
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -35,6 +40,29 @@ export const Register = ({ open, path, data }) => {
     };
   }, [open, path, navigate]);
 
+  const onSuccess = (data) => {
+    let record = "";
+    if (window) {
+      record = localStorage.getItem("registrationId");
+    }
+    base("Registration Data").update(
+      record,
+      {
+        PaymentReference: data.reference,
+      },
+      function (err, record) {
+        if (err) {
+          console.error(err);
+          return;
+        }
+        if (window) {
+          record = localStorage.setItem("registrationId", "");
+        }
+        navigate.push("/");
+      }
+    );
+  };
+
   const formik = useFormik({
     initialValues: {
       FirstName: "",
@@ -49,11 +77,25 @@ export const Register = ({ open, path, data }) => {
           console.error(err);
           return;
         }
-
-        navigate.push("/");
+        if (record.getId()) {
+          if (window) {
+            localStorage.setItem("registrationId", record.getId());
+          }
+          initializePayment(onSuccess, onClose);
+        }
       });
     },
   });
+
+  const { values } = formik;
+
+  const config = {
+    reference: new Date().getTime().toString(),
+    email: values.Email,
+    amount: fee, //Amount is in the country's lowest currency. E.g Kobo, so 20000 kobo = N200
+    publicKey: process.env.NEXT_PUBLIC_PAYSTACK_TEST,
+  };
+  const initializePayment = usePaystackPayment(config);
 
   return (
     <section className={`register ${open ? `flex fixed` : ` hidden`}`}>

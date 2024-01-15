@@ -16,8 +16,8 @@ export const InputGroup = ({
   ...props
 }) => {
   return (
-    <div class="input-group">
-      <Label htmlFor="" class="">
+    <div className="input-group">
+      <Label htmlFor="" className="">
         {label}
       </Label>
       <div>
