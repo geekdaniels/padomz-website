@@ -93,7 +93,7 @@ export const Register = ({ open, path, data }) => {
     reference: new Date().getTime().toString(),
     email: values.Email,
     amount: fee, //Amount is in the country's lowest currency. E.g Kobo, so 20000 kobo = N200
-    publicKey: process.env.NEXT_PUBLIC_PAYSTACK_TEST,
+    publicKey: process.env.NEXT_PUBLIC_PAYSTACK_LIVE,
   };
   const initializePayment = usePaystackPayment(config);
 
