@@ -182,7 +182,7 @@ export const Register = ({ open, path, data }) => {
 
       <div className>
         <p>
-          If you have any questions, contact <span>academy@padomzfx.com</span>
+          If you have any questions, contact <span>info@padomzfx.com</span>
         </p>
       </div>
     </section>

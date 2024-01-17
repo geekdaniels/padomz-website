@@ -107,7 +107,7 @@ export default function Contact() {
               </div>
               <div className="contact-text">
                 <p>Email</p>
-                <p>support@padomzfx.com</p>
+                <p>info@padomzfx.com</p>
               </div>
             </div>
           </div>
