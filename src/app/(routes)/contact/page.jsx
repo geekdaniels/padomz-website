@@ -1,5 +1,6 @@
 "use client";
-import { useState } from "react";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import { useEffect, useState } from "react";
 // Next
 import { useFormik } from "formik";
 import Link from "next/link";
@@ -12,10 +13,13 @@ import { TextArea } from "@/_components/atoms/TextArea";
 import { Header } from "@/_components/organisms/Header";
 // Utils
 import { SelectGroup } from "@/_components/molecules/SelectGroup";
-import { faqs } from "@/_utils/faqs";
 import { base } from "@/lib/airtable";
+import { client } from "@/lib/contentful/client";
 
 export default function Contact() {
+  const [faqs, setFaqs] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   const navigate = useRouter();
   // Initialize an array to track the active state for each FAQ item
   const [activeStates, setActiveStates] = useState(
@@ -48,6 +52,13 @@ export default function Contact() {
       });
     },
   });
+
+  useEffect(() => {
+    client.getEntries({ content_type: "faQs" }).then(function (faq) {
+      setFaqs(faq.items);
+      setLoading(false);
+    });
+  }, []);
 
   //
   return (
@@ -188,21 +199,29 @@ export default function Contact() {
           <header className="faqs-header">
             <h4>Frequently Asked Question</h4>
           </header>
-          <ul className="faqs-list">
-            {faqs.map(({ id, title, content }, index) => (
-              <li key={id} onClick={() => handleHeaderClick(index)}>
-                <header>
-                  <h5>{title}</h5>
-                  <svg
-                    className={activeStates[index] ? "rotate-180" : "rotate-0"}
-                  >
-                    <use href={`/images/sprite.svg#icon-caret`} />
-                  </svg>
-                </header>
-                {activeStates[index] && <p>{content}</p>}
-              </li>
-            ))}
-          </ul>
+
+          {!loading && (
+            <ul className="faqs-list">
+              {faqs.map(({ fields }, index) => (
+                <li key={index} onClick={() => handleHeaderClick(index)}>
+                  <header>
+                    <h5>{fields.question}</h5>
+                    <svg
+                      className={
+                        activeStates[index] ? "rotate-180" : "rotate-0"
+                      }
+                    >
+                      <use href={`/images/sprite.svg#icon-caret`} />
+                    </svg>
+                  </header>
+                  {activeStates[index] && (
+                    <p>{documentToReactComponents(fields.answer)}</p>
+                  )}
+                </li>
+              ))}
+            </ul>
+          )}
+
           <div className="faqs-footer">
             <Link href="/">
               <h5>FAQs</h5>

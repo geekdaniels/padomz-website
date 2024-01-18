@@ -94,6 +94,16 @@
             @apply h-[2.4rem] w-[2.4rem];
           }
         }
+
+        & p {
+          @apply mt-4;
+
+          & ul {
+            & li {
+              @apply border-0 py-2;
+            }
+          }
+        }
       }
       //
     }
