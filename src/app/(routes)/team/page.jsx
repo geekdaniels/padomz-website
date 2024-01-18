@@ -54,14 +54,14 @@ export default function Team() {
                     </>
                   ) : null}
 
-                  <div
+                  {/* <div
                     className="team-card-icon"
                     onClick={() => toggleSocials(id)}
                   >
                     <svg>
                       <use href={`/images/sprite.svg#icon-plus`} />
                     </svg>
-                  </div>
+                  </div> */}
                 </div>
               </div>
               <footer>
