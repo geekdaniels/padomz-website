@@ -19,7 +19,7 @@ export const TrainingSection = ({ data }) => {
         <div className="container">
           <div className="training-register--content">
             <header>
-              <p>Upcoming register</p>
+              <p>Upcoming Training</p>
               <h4>{fields.title}</h4>
               <p> {fields.briefDescription}</p>
             </header>
