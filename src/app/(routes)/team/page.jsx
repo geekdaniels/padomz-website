@@ -1,14 +1,26 @@
 "use client";
+import { client } from "@/lib/contentful/client";
 import { useState } from "react";
 // Next
 import Image from "next/image";
 // Components
 import { Header } from "@/_components/organisms/Header";
 // Utils
-import { teams } from "@/_utils/teams";
 
 export default function Team() {
   const [open, setOpen] = useState({});
+  const [loading, setLoading] = useState({});
+  const [teams, setTeams] = useState([]);
+
+  client
+    .getEntries({
+      content_type: "team",
+      order: "fields.order",
+    })
+    .then(function (teams) {
+      setTeams(teams.items);
+      setLoading(false);
+    });
 
   const toggleSocials = (id) => {
     setOpen((prevOpen) => ({
@@ -16,6 +28,7 @@ export default function Team() {
       [id]: !prevOpen[id],
     }));
   };
+
   return (
     <div className="team">
       <Header>
@@ -28,33 +41,42 @@ export default function Team() {
       </Header>
 
       <section className="container">
-        <div className="team">
-          {teams.map(({ id, name, role, image }) => (
-            <div className="team-card" key={id}>
-              <div className="team-card-image">
-                <Image src={image} height="" width="" alt="" />
-                <div className="team-card-icons">
-                  {open[id] ? (
-                    <>
-                      <div className="team-card-icon">
-                        <svg>
-                          <use href={`/images/sprite.svg#icon-minus`} />
-                        </svg>
-                      </div>
-                      <div className="team-card-icon">
-                        <svg>
-                          <use href={`/images/sprite.svg#icon-minus`} />
-                        </svg>
-                      </div>{" "}
-                      <div className="team-card-icon">
-                        <svg>
-                          <use href={`/images/sprite.svg#icon-minus`} />
-                        </svg>
-                      </div>
-                    </>
-                  ) : null}
+        {!loading && (
+          <div className="team">
+            {teams.map(({ id, fields }, index) => (
+              <div className="team-card" key={index}>
+                <div className="team-card-image">
+                  <Image
+                    src={`https:${fields?.image.fields.file.url}`}
+                    width={250}
+                    height={0}
+                    alt={fields.image.fields.title}
+                    // fill={true}
+                    quality={75}
+                    // layout="fill"
+                  />
+                  <div className="team-card-icons">
+                    {open[id] ? (
+                      <>
+                        <div className="team-card-icon">
+                          <svg>
+                            <use href={`/images/sprite.svg#icon-minus`} />
+                          </svg>
+                        </div>
+                        <div className="team-card-icon">
+                          <svg>
+                            <use href={`/images/sprite.svg#icon-minus`} />
+                          </svg>
+                        </div>{" "}
+                        <div className="team-card-icon">
+                          <svg>
+                            <use href={`/images/sprite.svg#icon-minus`} />
+                          </svg>
+                        </div>
+                      </>
+                    ) : null}
 
-                  {/* <div
+                    {/* <div
                     className="team-card-icon"
                     onClick={() => toggleSocials(id)}
                   >
@@ -62,15 +84,16 @@ export default function Team() {
                       <use href={`/images/sprite.svg#icon-plus`} />
                     </svg>
                   </div> */}
+                  </div>
                 </div>
+                <footer>
+                  <h5>{fields?.fullName}</h5>
+                  <p>{fields?.role}</p>
+                </footer>
               </div>
-              <footer>
-                <h5>{name}</h5>
-                <p>{role}</p>
-              </footer>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </section>
     </div>
   );
