@@ -97,6 +97,26 @@ export const Register = ({ open, path, data }) => {
   };
   const initializePayment = usePaystackPayment(config);
 
+  const formatNumberToCurrency = ({
+    number,
+    currencyCode = "NGN",
+    precision = 2,
+  }) => {
+    const formatter = new Intl.NumberFormat("en-NG", {
+      style: "currency",
+      currency: currencyCode,
+      minimumFractionDigits: precision,
+    });
+
+    let value = Number(number);
+
+    if (isNaN(value)) {
+      value = 0;
+    }
+
+    return formatter.format(value);
+  };
+
   return (
     <section className={`register ${open ? `flex fixed` : ` hidden`}`}>
       <Image src={Logo} width="" height="" alt="" />
@@ -117,7 +137,9 @@ export const Register = ({ open, path, data }) => {
             name="TrainingAmount"
             disabled
             onChange={formik.handleChange}
-            value={formik.values.TrainingAmount}
+            value={formatNumberToCurrency({
+              number: formik.values.TrainingAmount,
+            })}
           />
           <InputGroup
             label="Training Date"
