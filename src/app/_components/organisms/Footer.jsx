@@ -104,7 +104,8 @@ export const Footer = () => {
         </div>
       </div>
       <p className="footer-copyright">
-        <span>Copyright © 2023 &nbsp;</span> Licensed by PadomzFX Academy
+        <span>Copyright © {new Date().getFullYear()} &nbsp;</span> Licensed by
+        PadomzFX Academy
       </p>
     </footer>
   );
