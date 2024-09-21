@@ -53,7 +53,7 @@ export const Footer = () => {
         <div>
           <ul>
             <li>
-              <h5>+234 (1) 887-0033</h5>
+              <h5>020 (1) 887-0033</h5>
             </li>
             <li>
               <Link href="/">
