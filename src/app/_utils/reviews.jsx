@@ -8,7 +8,16 @@ export const reviews = [
     rating: '4.8',
   },
   {
-    id: 2,
+    id:2,
+    title: 'Real Stories, Real Results!',
+    review: `The results speak for themselves! Watch this inspiring testimonial from one of our students, sharing their journey from beginner to confident trader.`,
+    videoLink: 'https://youtu.be/2k0y-rI0nRs?si=fT9eArWD4-z2Ot5K',
+    // <iframe width="560" height="315" src="https://www.youtube.com/embed/2k0y-rI0nRs?si=QQfqQ57ZBUX8gp9E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+  }
+  ,
+  {
+    id: 3,
     name: 'Ngozi Okonkwo',
     title: 'Entrepreneur',
     review:
@@ -16,7 +25,7 @@ export const reviews = [
     rating: '4.5',
   },
   {
-    id: 3,
+    id: 4,
     name: 'Emeka Okafor',
     title: 'Investor',
     review:
@@ -24,7 +33,12 @@ export const reviews = [
     rating: '4.9',
   },
   {
-    id: 4,
+    id: 5,
+    image: '/images/testimonial.svg'
+  }
+  ,
+  {
+    id: 6,
     name: 'Chioma Eze',
     title: 'Financial Analyst',
     review:
@@ -32,7 +46,7 @@ export const reviews = [
     rating: '4.7',
   },
   {
-    id: 5,
+    id: 7,
     name: 'Oluwafemi Adegoke',
     title: 'Day Trader',
     review:
@@ -40,7 +54,7 @@ export const reviews = [
     rating: '4.6',
   },
   {
-    id: 6,
+    id: 8,
     name: 'Aisha Aliyu',
     title: 'Student',
     review:
@@ -48,7 +62,7 @@ export const reviews = [
     rating: '4.8',
   },
   {
-    id: 7,
+    id: 9,
     name: 'Chukwudi Nwosu',
     title: 'Stock Trader',
     review:
@@ -56,7 +70,7 @@ export const reviews = [
     rating: '4.9',
   },
   {
-    id: 8,
+    id: 10,
     name: 'Amaka Onyeka',
     title: 'Investment Consultant',
     review:
@@ -64,7 +78,7 @@ export const reviews = [
     rating: '4.7',
   },
   {
-    id: 9,
+    id: 11,
     name: 'Yusuf Abdullahi',
     title: 'Financial Planner',
     review:
@@ -72,7 +86,7 @@ export const reviews = [
     rating: '4.6',
   },
   {
-    id: 10,
+    id: 12,
     name: 'Chidinma Nwachukwu',
     title: 'Business Owner',
     review:

@@ -43,7 +43,10 @@ const TradingViewWidget = () => {
 
     return () => {
       // This code will run when the component is unmounted
-      document.getElementById("tradingview-widget-container").innerHTML = "";
+      const container = document.getElementById("tradingview-widget-container");
+      if (container) {
+        container.innerHTML = "";
+      }
     };
   }, []);
 

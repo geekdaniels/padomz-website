@@ -26,9 +26,16 @@
   }
 
   &--link {
+
+    &div{
+      @apply cursor-pointer
+    }
     & p {
       &:first-of-type {
-        @apply font-epilogue font-bold flex gap-x-[.8rem] items-center;
+        @apply font-epilogue font-bold flex gap-x-[.8rem] items-center cursor-pointer;
+      }
+      &:nth-of-type(2) {
+        @apply cursor-pointer font-normal;
       }
 
       & svg {
@@ -41,3 +48,6 @@
     }
   }
 }
+
+
+// testimonial animation
