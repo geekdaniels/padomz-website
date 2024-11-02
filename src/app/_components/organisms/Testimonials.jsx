@@ -10,21 +10,23 @@ import { reviews } from '@/_utils/reviews';
 export const Testimonials = ({ open, close }) => {
   const formRef = useRef(null);
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (formRef.current && !formRef.current.contains(event.target)) {
-        close();
-      }
-    };
 
-    if (open) {
-      document.addEventListener('click', handleClickOutside);
-    }
 
-    return () => {
-      document.removeEventListener('click', handleClickOutside);
-    };
-  }, [open, close]);
+  // useEffect(() => {
+  //   const handleClickOutside = (event) => {
+  //     if (formRef.current && !formRef.current.contains(event.target)) {
+  //       close();
+  //     }
+  //   };
+
+  //   if (open) {
+  //     document.addEventListener('click', handleClickOutside);
+  //   }
+
+  //   return () => {
+  //     document.removeEventListener('click', handleClickOutside);
+  //   };
+  // }, [open, close]);
   //
   return (
     <section className={`testimonials ${open ? `flex fixed` : ` hidden`}`}>
@@ -43,15 +45,22 @@ export const Testimonials = ({ open, close }) => {
           ({ id, name, title, review, rating }, index) =>
             index < 6 && (
               <div className="testimonials-card" key={id}>
-                <p>{name}</p>
-                <p>{title}</p>
-                <p>{review}</p>
-                <div className="testimonials-rating">
-                  <svg>
-                    <use href={`/images/sprite.svg#icon-star`} />
-                  </svg>
-                  <p>{rating} </p>
+                <div className='flex justify-between items-center pb-4'>
+                  <div>
+                    <p>{name}</p>
+                    <p>{title}</p>
+                  </div>
+
+                  <div className="testimonials-rating">
+                    <svg>
+                      <use href={`/images/sprite.svg#icon-star`} />
+                    </svg>
+                    <p className='cursor-pointer'>{rating} </p>
+                  </div>
                 </div>
+
+                <p>{review}</p>
+
               </div>
             )
         )}

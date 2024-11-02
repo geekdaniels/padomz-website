@@ -4,4 +4,4 @@ Airtable.configure({
   apiKey: process.env.NEXT_PUBLIC_AIRTABLE_TOKEN,
 });
 
-export const base = Airtable.base(process.env.NEXT_PUBLIC_AIRTABLE_BASE);
+export const base = Airtable.base(process.env.NEXT_PUBLIC_AIRTABLE_BASE); 

@@ -1,13 +1,14 @@
 "use client";
 //
 // Next
+import Link from "next/link";
 import Image from "next/image";
 // Components
 // Images
 import TestimonialImage from "@/_assets/images/testimonial-image.png";
 //
 
-export const TestimonialSection = ({ openModal }) => {
+export const TestimonialSection = () => {
   return (
     <section className="testimonial-section">
       <div className=" container">
@@ -21,13 +22,16 @@ export const TestimonialSection = ({ openModal }) => {
         <div className="testimonial-section--image">
           <Image src={TestimonialImage} width="" height="" alt="" />
           <div className="testimonial-section--link">
-            <p onClick={openModal}>
-              Read Testimonials
-              <svg>
-                <use href={`/images/sprite.svg#icon-arrow-right`} />
-              </svg>
-            </p>
-            <p>Over 20 Amazing Stories</p>
+            <Link href="/testimonials" >
+              <p>
+                Read Testimonials
+                <svg>
+                  <use href={`/images/sprite.svg#icon-arrow-right`} />
+                </svg>
+              </p>
+              <p>Over 20 Amazing Stories</p>
+            </Link>
+
           </div>
         </div>
       </div>
