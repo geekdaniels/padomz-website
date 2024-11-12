@@ -4,8 +4,8 @@
 import Image from "next/image";
 import Link from "next/link";
 // Components
-import HeroImage from "@/_assets/images/hero-image.png";
-import HeroWaves from "@/_assets/images/hero-waves.png";
+import HeroImage from "@/_assets/images/hero-image.svg";
+import HeroWaves from "@/_assets/images/hero-waves.svg";
 import { Button } from "@/_components/atoms/Button";
 import { Navbar } from "@/_components/organisms/Navbar";
 
@@ -16,7 +16,7 @@ export const LandingHeader = () => {
       <div className="landing-header-content container">
         <div className="landing-header-content--text">
           <h1>Learn Forex while you Earn with us</h1>
-          <h5>
+          <h5 >
             PadomzFx will teach you, fund your trading account, assuming the
             risk for you, allowing you to retain almost all of your generated
             profits.
