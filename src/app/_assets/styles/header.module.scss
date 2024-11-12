@@ -1,5 +1,5 @@
 .landing-header {
-  @apply bg-[#0e1d2b] pt-[2rem] lg:pl-[4.8rem] 2xl:pl-[9.6rem] relative lg:h-[103.5rem] overflow-hidden;
+  @apply bg-[url('/images/background.svg')] bg-[#0e1d2b] bg-cover bg-center bg-no-repeat pt-[2rem] lg:pl-[4.8rem] 2xl:pl-[9.6rem] relative lg:h-[103.5rem] overflow-hidden;
 
   &-content {
     @apply mt-[20rem] text-white lg:flex gap-x-[6%] lg:px-[4.8rem];
@@ -8,15 +8,15 @@
       @apply lg:w-[45%];
       //
       & h1 {
-        @apply w-full font-bold leading-[7rem] mb-[3rem] font-epilogue;
+        @apply w-full text-[67px] font-bold leading-[70px] mb-[3rem] font-epilogue;
       }
 
       & h5 {
-        @apply w-[85%] leading-[2.9rem] font-normal pb-[7.2rem];
+        @apply leading-[2.9rem] font-normal  bg-[#134818] p-[20px] rounded-lg lg:w-[546px] lg:h-[125px]  ;
       }
 
       & button {
-        @apply bg-[#009F0B] px-[6.4rem];
+        @apply bg-[#FF9000] px-[6.4rem] mt-[60px] rounded-[40px];
       }
     }
     //
