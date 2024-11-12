@@ -155,9 +155,9 @@ export default function Contact() {
                 value={formik.values.Course}
               >
                 <option value="">Select Service Type</option>
-                <option value="Nova Challenge Passing">
+                {/* <option value="Nova Challenge Passing">
                   Nova Challenge Passing
-                </option>
+                </option> */}
                 <option value="Trading Signals">Trading Signals</option>
                 <option value="Forex Training">Forex Training</option>
               </SelectGroup>
