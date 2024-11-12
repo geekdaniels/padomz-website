@@ -8,7 +8,9 @@ import LogoWhite from "@/_assets/images/logo-white.png";
 
 export const Footer = () => {
   return (
-    <footer className="footer">
+    <footer className="footer relative">
+      {/* <img src="/images/bg-numbers.svg" className="absolute inset-0 "/> */}
+
       <div className="footer-top container">
         <div>
           <Image width="" height="" src={LogoWhite} alt="" />

@@ -1,9 +1,15 @@
 .footer {
   //
-  @apply bg-[#0E1D2B]  text-white;
+  background-image: url('/images/background.svg'), url('/images/bg-numbers.svg');
+  background-color: #0e1d2b;
+  background-size: cover, contain; /* Adjust sizes if needed */
+  background-position: left, right ;
+  background-repeat: no-repeat, no-repeat;
+  color: white;
+
   //
   &-top {
-    @apply flex flex-col lg:flex-row lg:justify-between pt-[9.6rem] lg:px-[14rem] pb-[15.4rem] space-y-[7.2rem] lg:space-y-0;
+    @apply  flex flex-col lg:flex-row lg:justify-between pt-[9.6rem] lg:px-[14rem] pb-[15.4rem] space-y-[7.2rem] lg:space-y-0;
     //
     div {
       //
