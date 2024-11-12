@@ -32,16 +32,16 @@ export default function Home() {
     setRegister(false);
   };
   //
-  const openTestimonials = () => {
-    setTestimonials(true);
-  };
-  //
-  const closeTestimonials = () => {
-    setTestimonials(false);
-  };
+  // const openTestimonials = () => {
+  //   setTestimonials(true);
+  // };
+  
+  // const closeTestimonials = () => {
+  //   setTestimonials(false);
+  // };
   return (
     <div className="index">
-      <Testimonials open={testimonials} close={closeTestimonials} />
+      <Testimonials />
       <Register open={register} close={closeRegister} />
       <section className="container">
         <div className="potential">
@@ -172,7 +172,7 @@ of Forex trading.`}
       </section>
 
       {!loading && <TrainingSection openModal={openRegister} data={training} />}
-      <TestimonialSection openModal={openTestimonials} />
+      <TestimonialSection  />
     </div>
   );
 }

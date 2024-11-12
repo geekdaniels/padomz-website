@@ -34,7 +34,7 @@ const Training = async () => {
           );
         })}
       </div>
-      <TestimonialSection openModal={false} />
+      <TestimonialSection  />
     </div>
   );
 };
